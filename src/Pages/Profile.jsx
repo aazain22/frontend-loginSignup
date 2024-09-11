@@ -43,7 +43,7 @@ export default function Profile() {
       className="flex flex-col items-center justify-center min-h-screen bg-slate-950 relative bg-cover " 
       style={{ backgroundImage: `url(${bg})`, backgroundRepeat: 'no-repeat',  }}
     >
-      <div className="bg-slate-900 shadow-lg rounded-lg p-8 w-full max-w-md  flow-root float-left">
+      <div className="bg-slate-900 shadow-lg rounded-lg p-8 w-full max-w-md  absolute left-36">
         <h1 className="text-4xl font-bold text-stone-50 mb-6 text-center">
           Welcome, <span className="text-stone-50">{userData?.name}</span>!
         </h1>
@@ -63,7 +63,7 @@ export default function Profile() {
       
       {/* Quote aligned to the right side and slightly above */}
       <p 
-        className="text-stone-50 font-sans text-4xl leading-relaxed absolute right-10 top-20 w-1/3 text-right"
+        className="text-stone-50 font-sans text-4xl leading-relaxed absolute right-28 top-20 w-1/3 text-right"
       >
         “What are you so hesitant about? It’s your dream, isn’t it? Right there in front of you, and still you waver? Be reckless! Seize everything you can!”
       </p>

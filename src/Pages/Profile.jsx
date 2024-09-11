@@ -12,7 +12,7 @@ export default function Profile() {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch(`http://localhost:8080/auth/user/${email}`);
+        const response = await fetch(`https://backend-loginsignup-1.onrender.com/auth/user/${email}`);
         const data = await response.json();
 
         if (!response.ok) {

@@ -20,7 +20,7 @@ export default function Login() {
       return handleError('name, email, and password are required');
     }
     try {
-      const url = 'https://backend-loginsignup-1.onrender.com/auth/login';
+      const url = 'https://backend-loginsignup-1b73.onrender.com/auth/login';
       const response = await fetch(url, {
         method: 'POST',
         headers: {

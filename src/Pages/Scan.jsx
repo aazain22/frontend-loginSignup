@@ -10,7 +10,7 @@ export default function Scan() {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch(`https://backend-loginsignup-1.onrender.com/auth/user/${email}`);
+        const response = await fetch(`https://backend-loginsignup-1b73.onrender.com/auth/user/${email}`);
         const data = await response.json();
 
         if (!response.ok) {

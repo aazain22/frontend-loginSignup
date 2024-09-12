@@ -57,7 +57,7 @@ export default function Profile() {
         </div>
         <div className="flex flex-col items-center mt-8">
           <h3 className="text-lg font-medium text-stone-50 mb-4">Your Profile QR Code:</h3>
-          <QRCode value={`https://backend-loginsignup-1b73.onrender.com/profile/scan/${userData?.email}`} size={160} />
+          <QRCode value={`https://66e2937783c2940008765c65--frontend-loginsignup.netlify.app/profile/scan/${userData?.email}`} size={160} />
         </div>
       </div>
       

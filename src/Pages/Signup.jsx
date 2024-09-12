@@ -24,8 +24,10 @@ export default function Signup() {
     //       .catch((error) => {
     //         console.error('Error during sign-in:', error);
     //       });
+console.log(window.location.origin);
 
     const handleSignup = async (e) => {
+
         e.preventDefault();
         const { name, email, password } = signupInfo;
         if (!name || !email || !password) {

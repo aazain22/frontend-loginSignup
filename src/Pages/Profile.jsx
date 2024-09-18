@@ -2,122 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import QRCode from 'react-qr-code';
 import bg from '../assets/background.jpg';
+import UpdateUser from './Pages/UpdateUser';
+import DeleteUser from './Pages/DeleteUser';
 
 export default function Profile() {
   const { email } = useParams(); 
   const [userData, setUserData] = useState(null); 
   const [error, setError] = useState(null); 
-  const [loading, setLoading] = useState(true); 
-
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-    phone: '',
-    profilePhoto: null
-  });
-
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const response = await fetch(`https://backend-loginsignup-1b73.onrender.com/auth/user/${email}`);
-        const data = await response.json();
-
-        if (!response.ok) {
-          throw new Error(data.message || 'Error fetching user data');
-        }
-
-        setUserData(data.data); 
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false); 
-      }
-    };
-
-    fetchUserData();
-  }, [email]); 
-
-  if (loading) {
-    return <h1 className="text-stone-50">Loading...</h1>; 
-  }
-
-  if (error) {
-    return <h1 className="text-red-500">{error}</h1>; 
-  }
+  const [loading, setLoading] = useState(true);
+  
+  
 
 
-
-  const handleInputChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleFileChange = (e) => {
-    setFormData({ ...formData, profilePhoto: e.target.files[0] });
-  };
-
-  const handleUpdateUser = async (e) => {
-    e.preventDefault();
-
-    const { name, email, password, phone, profilePhoto } = formData;
-    if (!name || !email || !password || !phone) {
-      return handleError('All fields are required');
-    }
-
-    // Create FormData object for file and other fields
-    const userData = new FormData();
-    userData.append('name', name);
-    userData.append('email', email);
-    userData.append('password', password);
-    userData.append('phone', phone);
-    if (profilePhoto) {
-      userData.append('profilePhoto', profilePhoto);
-    }
-
-    try {
-      const userId = "USER_ID"; // Replace with the logged-in user's ID
-      const response = await fetch(`https://backend-loginsignup-1b73.onrender.com/auth/user/${email}`, {
-        method: 'PATCH',
-        body: userData
-      });
-
-      const result = await response.json();
-      if (result.success) {
-        handleSuccess(result.message);
-        setTimeout(() => {
-          navigate('/login');
-        }, 1000);
-      } else {
-        handleError(result.message);
-      }
-    } catch (error) {
-      handleError('Failed to update user');
-    }
-  };
-
-
-  const handleDeleteUser = async () => {
-    try {
-      const userId = "USER_ID"; // Replace with the logged-in user's ID
-      const response = await fetch(`https://backend-loginsignup-1b73.onrender.com/auth/user/${email}`, {
-        method: 'DELETE'
-      });
-
-      const result = await response.json();
-      if (result.success) {
-        handleSuccess(result.message);
-        setTimeout(() => {
-          navigate('/login'); // Redirect to login after deleting
-        }, 1000);
-      } else {
-        handleError(result.message);
-      }
-    } catch (error) {
-      handleError('Failed to delete user');
-    }
-  };
 
   return (
     <div 
@@ -142,9 +38,9 @@ export default function Profile() {
         </div>
         {/* <input type="file" name="profilePhoto" onChange={handleFileChange}  onSubmit={handleUpdateUser}/> */}
 
-        <button type='submit' onSubmit={() => handleUpdateUser} >Upload</button>
+        <button type='submit' onSubmit={() => UpdateUser} >Upload</button>
 
-        <button onClick={()=> handleDeleteUser}>Delete Account</button>
+        <button onClick={()=> DeleteUser}>Delete Account</button>
       </div>
       
       {/* Quote aligned to the right side and slightly above */}
@@ -153,6 +49,9 @@ export default function Profile() {
       >
         “What are you so hesitant about? It’s your dream, isn’t it? Right there in front of you, and still you waver? Be reckless! Seize everything you can!”
       </p>
+
+      
+      
     </div>
   );
 }

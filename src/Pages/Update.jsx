@@ -152,10 +152,10 @@ export default function UserProfile() {
   const handleUpdateUser = async (e) => {
     e.preventDefault();
 
-    const { name, email, password, phone, profilePhoto } = formData;
-    if (!name || !email || !password || !phone) {
-      return handleError('All fields are required');
-    }
+    const { name, email, password, phone } = formData;
+    // if (!name || !email || !password || !phone) {
+    //   return handleError('All fields are required');
+    // }
 
     // Create FormData object for file and other fields
     const userData = new FormData();
@@ -163,9 +163,9 @@ export default function UserProfile() {
     userData.append('email', email);
     userData.append('password', password);
     userData.append('phone', phone);
-    if (profilePhoto) {
-      userData.append('profilePhoto', profilePhoto);
-    }
+    // if (profilePhoto) {
+    //   userData.append('profilePhoto', profilePhoto);
+    // }
 
     try {
      

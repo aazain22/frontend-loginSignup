@@ -47,7 +47,7 @@ export default function Profile() {
   }
   
   const UpdateUser= () => {
-navigate('/update/123')
+navigate(`/update/${userData._id}`)
 
   }
 

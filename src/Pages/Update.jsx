@@ -120,10 +120,11 @@
 // }
 
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { handleError, handleSuccess } from '../util.js';
 
 export default function UserProfile() {
+  const {userId}= useParams()
   const [isEditing, setIsEditing] = useState(false); // Control whether the form is visible or not
   const [formData, setFormData] = useState({
     name: '',

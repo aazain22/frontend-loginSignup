@@ -38,6 +38,85 @@ export default function Profile() {
     return <h1 className="text-red-500">{error}</h1>; 
   }
 
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: '',
+    phone: '',
+    profilePhoto: null
+  });
+
+  const navigate = useNavigate();
+
+  const handleInputChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleFileChange = (e) => {
+    setFormData({ ...formData, profilePhoto: e.target.files[0] });
+  };
+
+  const handleUpdateUser = async (e) => {
+    e.preventDefault();
+
+    const { name, email, password, phone, profilePhoto } = formData;
+    if (!name || !email || !password || !phone) {
+      return handleError('All fields are required');
+    }
+
+    // Create FormData object for file and other fields
+    const userData = new FormData();
+    userData.append('name', name);
+    userData.append('email', email);
+    userData.append('password', password);
+    userData.append('phone', phone);
+    if (profilePhoto) {
+      userData.append('profilePhoto', profilePhoto);
+    }
+
+    try {
+      const userId = "USER_ID"; // Replace with the logged-in user's ID
+      const response = await fetch(`http://localhost:5000/user/update/${userId}`, {
+        method: 'PATCH',
+        body: userData
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        handleSuccess(result.message);
+        setTimeout(() => {
+          navigate('/login');
+        }, 1000);
+      } else {
+        handleError(result.message);
+      }
+    } catch (error) {
+      handleError('Failed to update user');
+    }
+  };
+
+
+  const handleDeleteUser = async () => {
+    try {
+      const userId = "USER_ID"; // Replace with the logged-in user's ID
+      const response = await fetch(`http://localhost:5000/user/delete/${userId}`, {
+        method: 'DELETE'
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        handleSuccess(result.message);
+        setTimeout(() => {
+          navigate('/login'); // Redirect to login after deleting
+        }, 1000);
+      } else {
+        handleError(result.message);
+      }
+    } catch (error) {
+      handleError('Failed to delete user');
+    }
+  };
+
   return (
     <div 
       className="flex flex-col items-center justify-center min-h-screen bg-slate-950 relative bg-cover " 
@@ -59,6 +138,10 @@ export default function Profile() {
           <h3 className="text-lg font-medium text-stone-50 mb-4">Your Profile QR Code:</h3>
           <QRCode value={`${window.location.origin}/profile/scan/${userData?.email}`} size={160} />
         </div>
+        <input type="file" name="profilePhoto" onChange={handleFileChange}  onSubmit={handleUpdateUser}/>
+        <button type='submit' onSubmit={handleUpdateUser}>Upload</button>
+
+        <button onClick={handleDeleteUser}>Delete Account</button>
       </div>
       
       {/* Quote aligned to the right side and slightly above */}

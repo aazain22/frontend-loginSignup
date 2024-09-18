@@ -9,6 +9,16 @@ export default function Profile() {
   const [error, setError] = useState(null); 
   const [loading, setLoading] = useState(true); 
 
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: '',
+    phone: '',
+    profilePhoto: null
+  });
+
+  const navigate = useNavigate();
+
   useEffect(() => {
     const fetchUserData = async () => {
       try {
@@ -38,15 +48,7 @@ export default function Profile() {
     return <h1 className="text-red-500">{error}</h1>; 
   }
 
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-    phone: '',
-    profilePhoto: null
-  });
 
-  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });

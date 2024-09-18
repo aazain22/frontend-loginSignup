@@ -10,6 +10,7 @@ export default function Profile() {
   const [userData, setUserData] = useState(null); 
   const [error, setError] = useState(null); 
   const [loading, setLoading] = useState(true);
+  const navigate= useNavigate()
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -29,8 +30,13 @@ export default function Profile() {
       }
     };
 
+
+
     fetchUserData();
   }, [email]); 
+
+  console.log(userData);
+  
 
   if (loading) {
     return <h1 className="text-stone-50">Loading...</h1>; 
@@ -40,7 +46,10 @@ export default function Profile() {
     return <h1 className="text-red-500">{error}</h1>; 
   }
   
-  
+  const UpdateUser= () => {
+navigate('/update/123')
+
+  }
 
 
 
@@ -67,7 +76,7 @@ export default function Profile() {
         </div>
         {/* <input type="file" name="profilePhoto" onChange={handleFileChange}  onSubmit={handleUpdateUser}/> */}
 
-        <button type='submit' onSubmit={() => UpdateUser} >Update</button>
+        <button type='submit' onSubmit={ UpdateUser} >Update</button>
 
         <button onClick={()=> DeleteUser}>Delete Account</button>
       </div>

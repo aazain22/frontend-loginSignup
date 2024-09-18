@@ -167,8 +167,8 @@ export default function UserProfile() {
     }
 
     try {
-      const userId = "USER_ID"; // Replace with the logged-in user's ID
-      const response = await fetch(`http://localhost:5000/user/update/${userId}`, {
+     
+      const response = await fetch(`https://backend-loginsignup-1b73.onrender.com/auth/user/update/${userId}`, {
         method: 'PATCH',
         body: userData
       });
@@ -187,26 +187,26 @@ export default function UserProfile() {
     }
   };
 
-  const handleDeleteUser = async () => {
-    try {
-      const userId = "USER_ID"; // Replace with the logged-in user's ID
-      const response = await fetch(`http://localhost:5000/user/delete/${userId}`, {
-        method: 'DELETE'
-      });
+  // const handleDeleteUser = async () => {
+  //   try {
+  //     const userId = "USER_ID"; // Replace with the logged-in user's ID
+  //     const response = await fetch(`http://localhost:5000/user/delete/${userId}`, {
+  //       method: 'DELETE'
+  //     });
 
-      const result = await response.json();
-      if (result.success) {
-        handleSuccess(result.message);
-        setTimeout(() => {
-          navigate('/login'); // Redirect to login after deleting
-        }, 1000);
-      } else {
-        handleError(result.message);
-      }
-    } catch (error) {
-      handleError('Failed to delete user');
-    }
-  };
+  //     const result = await response.json();
+  //     if (result.success) {
+  //       handleSuccess(result.message);
+  //       setTimeout(() => {
+  //         navigate('/login'); // Redirect to login after deleting
+  //       }, 1000);
+  //     } else {
+  //       handleError(result.message);
+  //     }
+  //   } catch (error) {
+  //     handleError('Failed to delete user');
+  //   }
+  // };
 
   return (
     <div>
@@ -215,7 +215,7 @@ export default function UserProfile() {
       <button onClick={toggleEditForm}>
         {isEditing ? 'Cancel' : 'Update Profile'}
       </button>
-      <button onClick={handleDeleteUser}>Delete Account</button>
+   
 
       {/* Conditionally render update form */}
       {isEditing && (

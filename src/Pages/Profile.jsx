@@ -10,6 +10,35 @@ export default function Profile() {
   const [userData, setUserData] = useState(null); 
   const [error, setError] = useState(null); 
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await fetch(`https://backend-loginsignup-1b73.onrender.com/auth/user/${email}`);
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.message || 'Error fetching user data');
+        }
+
+        setUserData(data.data); 
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false); 
+      }
+    };
+
+    fetchUserData();
+  }, [email]); 
+
+  if (loading) {
+    return <h1 className="text-stone-50">Loading...</h1>; 
+  }
+
+  if (error) {
+    return <h1 className="text-red-500">{error}</h1>; 
+  }
   
   
 
@@ -38,7 +67,7 @@ export default function Profile() {
         </div>
         {/* <input type="file" name="profilePhoto" onChange={handleFileChange}  onSubmit={handleUpdateUser}/> */}
 
-        <button type='submit' onSubmit={() => UpdateUser} >Upload</button>
+        <button type='submit' onSubmit={() => UpdateUser} >Update</button>
 
         <button onClick={()=> DeleteUser}>Delete Account</button>
       </div>

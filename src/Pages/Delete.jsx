@@ -1,13 +1,14 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { handleError, handleSuccess } from '../util.js';
 
 export default function DeleteUser() {
     const navigate = useNavigate();
+    const {userId}= useParams()
   
     const handleDeleteUser = async () => {
       try {
-        const userId = "USER_ID"; // Replace with the logged-in user's ID
-        const response = await fetch(`https://backend-loginsignup-1b73.onrender.com/auth/user/${email}`, {
+        // Replace with the logged-in user's ID
+        const response = await fetch(`https://backend-loginsignup-1b73.onrender.com/auth/user/delete/${userId}`, {
           method: 'DELETE'
         });
   

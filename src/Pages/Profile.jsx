@@ -50,6 +50,10 @@ export default function Profile() {
 navigate(`/update/${userData._id}`)
 
   }
+  const DeleteUser= () => {
+navigate(`/delete/${userData._id}`)
+
+  }
 
 
 
@@ -78,7 +82,7 @@ navigate(`/update/${userData._id}`)
 
         <button onClick={ UpdateUser} >Update</button>
 
-        <button onClick={()=> DeleteUser}>Delete Account</button>
+        <button onClick={DeleteUser}>Delete Account</button>
       </div>
       
       {/* Quote aligned to the right side and slightly above */}

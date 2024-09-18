@@ -76,7 +76,7 @@ export default function Profile() {
 
     try {
       const userId = "USER_ID"; // Replace with the logged-in user's ID
-      const response = await fetch(`http://localhost:5000/user/update/${userId}`, {
+      const response = await fetch(`https://backend-loginsignup-1b73.onrender.com/auth/user/${email}`, {
         method: 'PATCH',
         body: userData
       });
@@ -99,7 +99,7 @@ export default function Profile() {
   const handleDeleteUser = async () => {
     try {
       const userId = "USER_ID"; // Replace with the logged-in user's ID
-      const response = await fetch(`http://localhost:5000/user/delete/${userId}`, {
+      const response = await fetch(`https://backend-loginsignup-1b73.onrender.com/auth/user/${email}`, {
         method: 'DELETE'
       });
 

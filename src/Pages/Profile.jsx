@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import QRCode from 'react-qr-code';
 import bg from '../assets/background.jpg';
-import UpdateUser from './Pages/UpdateUser';
-import DeleteUser from './Pages/DeleteUser';
+import UpdateUser from './updateUser';
+import DeleteUser from './deleteUser';
 
 export default function Profile() {
   const { email } = useParams(); 

@@ -74,9 +74,9 @@ navigate('/update/123')
           <h3 className="text-lg font-medium text-stone-50 mb-4">Your Profile QR Code:</h3>
           <QRCode value={`${window.location.origin}/profile/scan/${userData?.email}`} size={160} />
         </div>
-        {/* <input type="file" name="profilePhoto" onChange={handleFileChange}  onSubmit={handleUpdateUser}/> */}
+       
 
-        <button type='submit' onSubmit={ UpdateUser} >Update</button>
+        <button onClick={ UpdateUser} >Update</button>
 
         <button onClick={()=> DeleteUser}>Delete Account</button>
       </div>

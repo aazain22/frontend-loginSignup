@@ -138,10 +138,11 @@ export default function Profile() {
           <h3 className="text-lg font-medium text-stone-50 mb-4">Your Profile QR Code:</h3>
           <QRCode value={`${window.location.origin}/profile/scan/${userData?.email}`} size={160} />
         </div>
-        <input type="file" name="profilePhoto" onChange={handleFileChange}  onSubmit={handleUpdateUser}/>
-        <button type='submit' onSubmit={handleUpdateUser}>Upload</button>
+        {/* <input type="file" name="profilePhoto" onChange={handleFileChange}  onSubmit={handleUpdateUser}/> */}
 
-        <button onClick={handleDeleteUser}>Delete Account</button>
+        <button type='submit' onSubmit={() => handleUpdateUser} >Upload</button>
+
+        <button onClick={()=> handleDeleteUser}>Delete Account</button>
       </div>
       
       {/* Quote aligned to the right side and slightly above */}

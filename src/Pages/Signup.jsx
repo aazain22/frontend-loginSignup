@@ -386,7 +386,7 @@ export default function Signup() {
                             />
                         </div>
 
-                        <div>
+                        {/* <div>
                             <label htmlFor="profilePhoto" className="block text-slate-950 text-sm font-medium mb-1">Profile Photo</label>
                             <input 
                                 onChange={handleFileChange}
@@ -395,7 +395,7 @@ export default function Signup() {
                                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-950 text-black" 
                                 accept="image/*"  // Allow only image files
                             />
-                        </div>
+                        </div> */}
 
                         <button 
                             type="submit" 

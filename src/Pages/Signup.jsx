@@ -104,17 +104,6 @@ export default function Signup() {
                     </div>
 
                     <div>
-                        <h1>{gender}</h1>
-                        <input type="radio" name='gender' value= 'male' onChange={e=> setGender(e.target.value)}
-                        className="mt-1 w-full px-4 py-2 border border-gray-300 text-black"
-                        /> 
-                        <input type="radio" name='gender' value= 'female'
-                        onChange={e=> setGender(e.target.value)}
-                       className="mt-1 w-full px-4 py-2 border border-gray-300  text-black"
-                       /> 
-                    </div>
-
-                    <div>
                         <label htmlFor="phone" className="block text-slate-950 text-sm font-medium">Phone Number</label>
                         <input
                             onChange={(e) => setSignupInfo({ ...signupInfo, phone: e.target.value })}

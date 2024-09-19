@@ -105,10 +105,13 @@ export default function Signup() {
 
                     <div>
                         <h1>{gender}</h1>
-                        <input type="radio" name='gender' value= 'male' onChange={e=> setGender(e.target.value)}/> Male
+                        <input type="radio" name='gender' value= 'male' onChange={e=> setGender(e.target.value)}
+                        className="mt-1 w-full px-4 py-2 border border-gray-300 text-black"
+                        /> 
                         <input type="radio" name='gender' value= 'female'
                         onChange={e=> setGender(e.target.value)}
-                        /> Female
+                       className="mt-1 w-full px-4 py-2 border border-gray-300  text-black"
+                       /> 
                     </div>
 
                     <div>

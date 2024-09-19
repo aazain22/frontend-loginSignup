@@ -106,6 +106,9 @@ export default function Scan() {
           <h2 className="text-lg md:text-2xl font-medium text-stone-50">
             Email: <span className="font-semibold text-stone-50">{userData?.email}</span>
           </h2>
+          <h2 className="text-lg md:text-2xl font-medium text-stone-50">
+            Phone: <span className="font-semibold text-stone-50">{userData?.phone}</span>
+          </h2>
         </div>
       </div>
     </div>

@@ -55,7 +55,7 @@ export default function Profile() {
 
   return (
     <div
-      className="flex flex-col items-center justify-center min-h-screen bg-slate-950 relative bg-cover px-4 sm:px-6 lg:px-8"
+      className="flex flex-col items-center justify-center min-h-screen bg-slate-950 relative bg-cover px-4 sm:px-6 lg:px-8 mt-2"
       style={{ backgroundImage: `url(${bg})`, backgroundRepeat: 'no-repeat' }}
     >
       <div className="bg-slate-900 shadow-lg rounded-lg p-8 w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl relative sm:mt-20 md:mt-28">
@@ -68,6 +68,9 @@ export default function Profile() {
           </h2>
           <h2 className="text-xl sm:text-2xl font-medium text-stone-50">
             Email: <span className="font-semibold text-stone-50">{userData?.email}</span>
+          </h2>
+          <h2 className="text-xl sm:text-2xl font-medium text-stone-50">
+            Phone: <span className="font-semibold text-stone-50">{userData?.phone}</span>
           </h2>
         </div>
         <div className="flex flex-col items-center mt-8">

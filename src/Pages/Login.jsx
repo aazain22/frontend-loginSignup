@@ -17,7 +17,7 @@ export default function Login() {
     e.preventDefault();
     const { email, password } = loginInfo;
     if (!email || !password) {
-      return handleError('name, email, and password are required');
+      return handleError('Email, and password are required');
     }
     try {
       const url = 'https://backend-loginsignup-1b73.onrender.com/auth/login';
@@ -111,7 +111,7 @@ export default function Login() {
               </Link>
             </p>
           </form>
-          <ToastContainer />
+          {/* <ToastContainer /> */}
         </div>
       </div>
     </div>
